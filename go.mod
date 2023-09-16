@@ -1,4 +1,4 @@
-module github/AhmedRabea0302/go_bookstoreapi
+module github.com/AhmedRabea0302/go_bookstoreapi
 
 go 1.20
 

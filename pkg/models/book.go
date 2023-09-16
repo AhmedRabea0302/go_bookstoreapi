@@ -1,9 +1,7 @@
 package models
 
 import (
-	config "command-line-arguments/home/fadloovich/Public/D/Tuts/go_tuts/goprojects/bookmanagerapi/pkg/config/app.go"
-
-	"github.com/ginzhu/gorm"
+	"github.com/AhmedRabea0302/go_bookstoreapi/pkg/config"
 	"github.com/jinzhu/gorm"
 )
 
@@ -20,4 +18,28 @@ func init() {
 	config.Connect()
 	db = config.GetDb()
 	db.AutoMigrate(&Book{})
+}
+
+func (b *Book) CreateBook() *Book {
+	db.NewRecord(b)
+	db.Create(&b)
+	return b
+}
+
+func GetAllBooks() []Book {
+	var Books []Book
+	db.Find(&Books)
+	return Books
+}
+
+func GetBookById(Id int64) (*Book, *gorm.DB) {
+	var getBook Book
+	db := db.Where("ID=?", Id).Find(&getBook)
+	return &getBook, db
+}
+
+func DeleteBook(Id int64) Book {
+	var book Book
+	db.Where("Id=?", Id).Delete(book)
+	return book
 }

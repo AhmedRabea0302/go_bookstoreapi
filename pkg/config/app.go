@@ -1,9 +1,8 @@
 package config
 
 import (
-	"github.com/ginzhu/gorm"
-	_ "github.com/ginzhu/gorm/dialects/mysql"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var (
